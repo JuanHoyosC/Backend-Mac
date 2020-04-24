@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.use(require('./routes/index'));
+app.use(require('./routes/login.router'));
 
 
 

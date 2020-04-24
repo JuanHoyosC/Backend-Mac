@@ -1,6 +1,6 @@
 const moongoose = require('mongoose');
 
-moongoose.connect('mongodb://localhost/angular-auth', {
+moongoose.connect('mongodb://localhost/mac', {
     useNewUrlParser:true,
     useUnifiedTopology: true
 })
