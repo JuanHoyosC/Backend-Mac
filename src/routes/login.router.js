@@ -1,20 +1,11 @@
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const app = express();
+const express = require('express')
+const router = express.Router();
+const usuarioCtrl = require('../controllers/usuario.controller');
+const jwt = require('jsonwebtoken');
 
-require('./database');
-
-//middleware
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(cors());
-
-//routes
-app.use(require('./routes/login.router'));
-
-
-
-app.listen(3000, ()=>{
-    console.log("servidor conectado en el puerto 3000")
+router.post('/login', (req, res) => {
+    usuarioCtrl.buscarUsuario(req, res)
 });
+
+
+module.exports = router

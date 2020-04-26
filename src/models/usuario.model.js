@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const usuarioSchema = new Schema({
     nombre: {type: String, required: true},
-    contraseña: {type: String, required: true},
+    clave: {type: String, required: true},
     correo: {type: String, required: true},
     telefono: {type: Number, required: true},
     iD: {type: Number, required: true}
@@ -11,13 +11,13 @@ const usuarioSchema = new Schema({
     timestamps: true
 });
 
-usuarioSchema.methods.encriptarContraseña = async (contraseña) => {
+usuarioSchema.methods.encriptarClave = async (clave) => {
     const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(contraseña, salt);
+    return await bcrypt.hash(clave, salt);
 }
 
-usuarioSchema.methods.mathContraseña = async function(contraseña) {
-    await bcrypt.compare(contraseña, this.contraseña)
+usuarioSchema.methods.mathClave = async function(clave) {
+    return await bcrypt.compare(clave, this.clave)
 }
 
-module.exports = model('usuerios', usuarioSchema);
+module.exports = model('usuarios', usuarioSchema);
